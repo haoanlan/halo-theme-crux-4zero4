@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/haoanlan/halo-theme-crux-4zero4">
-    <img src=" https://blog.404notfound.space/upload/10001-txin.png" alt="Banner" width="50%">
+    <img src="./pic/10001.png" alt="Banner" width="50%">
   </a>
 
 <h3 align="center">Crux</h3>
@@ -15,7 +15,15 @@
 2. 如遇到bug建议自行解决或者提pr，因为提给我我也不会修（太菜了）。
 3. 不要期望更新，除非我实在受不了了bug了并且钻研出来了。
 ## 预览
+网址实际预览需要等待
+图片预览
+<img src="./pic/1.png">
+<img src="./pic/2.png">
+<img src="./pic/3.png">
 
+## to do
+1. 对我自己发现并且忍受不了的bug进行修改。
+2. 页面跳转加入舒服的过渡动画。
 ### 主题目录结构
    .
    ├── templates
