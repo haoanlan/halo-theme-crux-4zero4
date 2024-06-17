@@ -25,46 +25,45 @@
 1. 对我自己发现并且忍受不了的bug进行修改。
 2. 页面跳转加入舒服的过渡动画。
 
-### 主题目录结构
-   .
-   ├── templates
-   │   ├── modules
-   │   │   ├── components
-   │   │   │   ├── archives-post-card.html
-   │   │   │   ├── footer-basic.html
-   │   │   │   ├── footer.html
-   │   │   │   ├── health-check.html
-   │   │   │   ├── hero.html
-   │   │   │   ├── nav.html
-   │   │   │   ├── post-card.html
-   │   │   │   ├── social-card.html
-   │   │   │   ├── social.html
-   │   │   │   └── user-card.html
-   │   │   ├── icon
-   │   │   │   ├── github.html
-   │   │   │   ├── links.html //remove soon
-   │   │   │   └── qq.html
-   │   │   └── layout.html
-   │   ├── assets
-   │   │   └── dist
-   │   │       ├── main.iife.js
-   │   │       └── style.css
-   │   ├── archives.html
-   │   ├── author.html
-   │   ├── categories.html
-   │   ├── category.html
-   │   ├── index.html
-   │   ├── links.html
-   │   ├── moments.html
-   │   ├── page.html
-   │   ├── page_about_personal.html
-   │   ├── page_github.html
-   │   ├── photos.html
-   │   ├── post.html
-   │   ├── tag.html
-   │   └── tags.html
-   ├── annotation-setting.yaml
-   ├── settings.yaml
-   └── theme.yaml
-   ```
+## 主题目录结构
 
+.
+├── templates
+│   ├── modules
+│   │   ├── components
+│   │   │   ├── archives-post-card.html
+│   │   │   ├── footer-basic.html
+│   │   │   ├── footer.html
+│   │   │   ├── health-check.html
+│   │   │   ├── hero.html
+│   │   │   ├── nav.html
+│   │   │   ├── post-card.html
+│   │   │   ├── social-card.html
+│   │   │   ├── social.html
+│   │   │   └── user-card.html
+│   │   ├── icon
+│   │   │   ├── github.html
+│   │   │   ├── links.html //remove soon
+│   │   │   └── qq.html
+│   │   └── layout.html
+│   ├── assets
+│   │   └── dist
+│   │       ├── main.iife.js
+│   │       └── style.css
+│   ├── archives.html
+│   ├── author.html
+│   ├── categories.html
+│   ├── category.html
+│   ├── index.html
+│   ├── links.html
+│   ├── moments.html
+│   ├── page.html
+│   ├── page_about_personal.html
+│   ├── page_github.html
+│   ├── photos.html
+│   ├── post.html
+│   ├── tag.html
+│   └── tags.html
+├── annotation-setting.yaml
+├── settings.yaml
+└── theme.yaml
