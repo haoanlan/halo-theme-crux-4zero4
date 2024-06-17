@@ -26,7 +26,7 @@
 >
   <!-- 用于设置文章封面图时渲染文章封面图 -->
   <div
-    th:unless="${post.spec.cover.isEmpty()}"
+    th:unless="${#strings.isEmpty(post.spec.cover)}"
     class="h-48 w-full rounded-t-lg bg-cover bg-center"
     th:style="'background-image:url(' + ${post.spec.cover} + ')'"
   >
@@ -62,7 +62,7 @@
   </div>
   <!-- 用于在未设置文章封面图时调用默认封面图 -->
   <div
-    th:if="${post.spec.cover.isEmpty()}"
+    th:if="${#strings.isEmpty(post.spec.cover)}"
     class="h-48 w-full rounded-t-lg bg-cover bg-center"
     th:style="'background-image:url(' + ${theme.config.global.default_cover} + ')'"
   >
@@ -100,7 +100,7 @@
     <!-- 文章发布日期 -->
     <div
       class="text-xs text-gray-500 transition duration-700 dark:text-slate-400"
-      th:text="${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd HH:mm')}"
+      th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm')}"
     ></div>
     <div
       class="line-clamp-1 text-2xl font-bold text-gray-900 transition transition duration-700 duration-700 hover:text-blue-700 hover:underline dark:text-slate-100"
@@ -111,6 +111,7 @@
     <!-- 文章摘要 -->
     <p
       class="line-clamp-5 h-24 text-sm text-gray-500 transition duration-700 dark:text-slate-400"
+      style="line-height: 1.2rem"
       th:text="${post.status.excerpt}"
     ></p>
     <!-- 文章跳转链接 -->
