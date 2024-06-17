@@ -16,6 +16,7 @@
 3. 不要期望更新，除非我实在受不了了bug了并且钻研出来了。
 ## 预览
 网址实际预览需要等待
+<br/>
 图片预览
 <img src="./pic/1.png">
 <img src="./pic/2.png">
@@ -27,43 +28,45 @@
 
 ## 主题目录结构
 
-.
-├── templates
-│   ├── modules
-│   │   ├── components
-│   │   │   ├── archives-post-card.html
-│   │   │   ├── footer-basic.html
-│   │   │   ├── footer.html
-│   │   │   ├── health-check.html
-│   │   │   ├── hero.html
-│   │   │   ├── nav.html
-│   │   │   ├── post-card.html
-│   │   │   ├── social-card.html
-│   │   │   ├── social.html
-│   │   │   └── user-card.html
-│   │   ├── icon
-│   │   │   ├── github.html
-│   │   │   ├── links.html //remove soon
-│   │   │   └── qq.html
-│   │   └── layout.html
-│   ├── assets
-│   │   └── dist
-│   │       ├── main.iife.js
-│   │       └── style.css
-│   ├── archives.html
-│   ├── author.html
-│   ├── categories.html
-│   ├── category.html
-│   ├── index.html
-│   ├── links.html
-│   ├── moments.html
-│   ├── page.html
-│   ├── page_about_personal.html
-│   ├── page_github.html
-│   ├── photos.html
-│   ├── post.html
-│   ├── tag.html
-│   └── tags.html
-├── annotation-setting.yaml
-├── settings.yaml
-└── theme.yaml
+   ```
+   .
+   ├── templates
+   │   ├── modules
+   │   │   ├── components
+   │   │   │   ├── archives-post-card.html
+   │   │   │   ├── footer-basic.html
+   │   │   │   ├── footer.html
+   │   │   │   ├── health-check.html
+   │   │   │   ├── hero.html
+   │   │   │   ├── nav.html
+   │   │   │   ├── post-card.html
+   │   │   │   ├── social-card.html
+   │   │   │   ├── social.html
+   │   │   │   └── user-card.html
+   │   │   ├── icon
+   │   │   │   ├── github.html
+   │   │   │   ├── links.html //remove soon
+   │   │   │   └── qq.html
+   │   │   └── layout.html
+   │   ├── assets
+   │   │   └── dist
+   │   │       ├── main.iife.js
+   │   │       └── style.css
+   │   ├── archives.html
+   │   ├── author.html
+   │   ├── categories.html
+   │   ├── category.html
+   │   ├── index.html
+   │   ├── links.html
+   │   ├── moments.html
+   │   ├── page.html
+   │   ├── page_about_personal.html
+   │   ├── page_github.html
+   │   ├── photos.html
+   │   ├── post.html
+   │   ├── tag.html
+   │   └── tags.html
+   ├── annotation-setting.yaml
+   ├── settings.yaml
+   └── theme.yaml
+   ```
