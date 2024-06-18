@@ -15,7 +15,7 @@
 2. 如遇到bug建议自行解决或者提pr，因为提给我我也不会修（太菜了）。
 3. 不要期望更新，除非我实在受不了了bug了并且钻研出来了。
 ## 预览
-crux.back1.hpnu.cn
+http://crux.back1.hpnu.cn/
 <br/>
 图片预览
 <img src="./pic/1.png">
