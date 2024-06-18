@@ -1,3 +1,6 @@
+.moments_1::-webkit-scrollbar {
+  display: none;
+}
 ::-webkit-scrollbar {
   background-color: initial;
 }
