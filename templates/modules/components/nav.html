@@ -44,7 +44,7 @@
 >
   <div class="w-full">
     <div class="flex w-full items-center justify-between p-4 px-4">
-      <a href="/" class="flex items-start justify-start gap-2">
+      <a href="/" class="flex items-center justify-start gap-2">
         <div
           th:unless="${theme.config.nav.emoji.isEmpty()}"
           class="flex h-8 w-8 items-center justify-center rounded-lg bg-white p-0.5 transition duration-700 dark:bg-slate-700"
@@ -110,15 +110,30 @@
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
           >
-            <div th:each="menuItem : ${menuItems}" class="py-1" role="none">
+            <div th:each="menuItem : ${menuItems}" class="divide-y divide-gray-100"  role="none">
               <a
                 th:href="${menuItem.status.href}"
                 th:text="${menuItem.status.displayName}"
-                class="block px-4 py-2 text-sm text-gray-700 transition duration-700 dark:text-white"
+                class="block px-4 py-3 text-sm text-gray-700 transition duration-700 dark:text-white"
                 role="menuitem"
                 tabindex="-1"
                 id="menu-item-0"
               ></a>
+              <div th:if="${not #lists.isEmpty(menuItem.children)}" class="left-full top-0 bg-white ring-1 ring-black ring-opacity-5 transition duration-700 dark:text-white dark:bg-slate-700">
+                <div class="divide-y divide-gray-100" role="none">
+                    <div th:each="childMenuItem : ${menuItem.children}" role="none">
+                        <a
+                        th:href="@{${childMenuItem.status.href}}"
+                        th:text="${childMenuItem.status.displayName}"
+                        th:target="${childMenuItem.spec.target?.value}"
+                        class="block px-8 py-3 text-sm text-gray-700 transition duration-700 dark:text-white"
+                        role="menuitem"
+                        tabindex="-1"
+                        id="menu-item-0"
+                        ></a>
+                    </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -196,16 +211,55 @@
       </div>
     </div>
   </div>
-  <div class="w-full border-t p-4 px-4">
+  <div class="specific-element w-full border-t p-4 px-4">
     <!-- nav links -->
-    <div class="flex w-full items-center justify-start space-x-4 overflow-auto">
-      <div th:each="menuItem : ${menuFinder.getByName(theme.config.nav.menu).menuItems}">
+    <div 
+      class="flex w-full items-center justify-start space-x-4 overflow-auto"
+    >
+      <div 
+        th:each="menuItem : ${menuFinder.getByName(theme.config.nav.menu).menuItems}"
+        x-data="dropdown"
+        @mouseenter="clearTimeout(timer); show = true"
+        @mouseleave="timer = setTimeout(() => show = false, 300)"
+      > 
         <!-- usual use ${menuFinder.getByName(theme.config.nav.menu).menuItems} to get menu items -->
-        <a
-          class="whitespace-nowrap break-keep text-sm font-semibold text-black text-gray-500 transition transition duration-700 duration-700 hover:text-blue-700 hover:shadow-2xl dark:text-slate-300"
-          th:href="@{${menuItem.status.href}}"
-          th:text="${menuItem.status.displayName}"
-        ></a>
+        <span th:if="${not #lists.isEmpty(menuItem.children)}">
+          <button 
+            type="button"
+            class="whitespace-nowrap break-keep text-sm font-semibold text-black text-gray-500 transition transition duration-700 duration-700 hover:text-blue-700 hover:shadow-2xl dark:text-slate-300"
+          >
+            <span th:text="${menuItem.status.displayName}"></span>
+          </button>
+        </span>
+        <span th:if="${#lists.isEmpty(menuItem.children)}">
+          <a
+            class="whitespace-nowrap break-keep text-sm font-semibold text-black text-gray-500 transition transition duration-700 duration-700 hover:text-blue-700 hover:shadow-2xl dark:text-slate-300"
+            th:href="@{${menuItem.status.href}}"
+            th:text="${menuItem.status.displayName}"
+            th:target="${menuItem.spec.target?.value}"
+          ></a>
+        </span>
+        <div
+          th:if="${not #lists.isEmpty(menuItem.children)}"
+          x-show="show"
+          class="absolute z-10 mt-2 w-32 origin divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition duration-700  dark:bg-slate-700"
+          x-transition:enter="transition ease-out duration-100"
+          x-transition:enter-start="transform opacity-0 scale-95"
+          x-transition:enter-end="transform opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-75"
+          x-transition:leave-start="transform opacity-100 scale-100"
+          x-transition:leave-end="transform opacity-0 scale-95"
+        >
+          <div th:each="childMenuItem : ${menuItem.children}" class="py-1" role="none">
+            <a 
+              th:href="@{${childMenuItem.status.href}}"
+              th:text="${childMenuItem.status.displayName}"
+              th:target="${childMenuItem.spec.target?.value}"
+              class="block px-4 py-2 text-sm text-gray-700 transition duration-700 dark:text-white"
+              tabindex="-1"
+            ></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

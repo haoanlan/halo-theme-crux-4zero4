@@ -11,6 +11,7 @@
 
 export default () => ({
   show: false,
+  timer: null,
   toggle() {
     this.show = !this.show;
     console.log(this.show);
