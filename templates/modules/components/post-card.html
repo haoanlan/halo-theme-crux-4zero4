@@ -64,7 +64,8 @@
   <div
     th:if="${#strings.isEmpty(post.spec.cover)}"
     class="h-48 w-full rounded-t-lg bg-cover bg-center"
-    th:style="'background-image:url(' + ${theme.config.global.default_cover} + ')'"
+    th:with='postRandomImg=${#strings.contains(theme.config.global.default_cover,"?") ? theme.config.global.default_cover+"&" : theme.config.global.default_cover+"?"}'
+    th:style="'background-image:url(' + ${postRandomImg+post.spec.publishTime} + ')'"
   >
     <div
       class="flex h-full w-full items-start justify-between rounded-t-lg bg-gradient-to-b from-black/50 to-white/0 p-4 pt-6"
