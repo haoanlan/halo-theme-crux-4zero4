@@ -17,7 +17,11 @@
           th:href="${categorie.status.permalink}"
           class="flex h-fit w-fit items-center space-x-0.5 rounded-lg bg-green-50 p-0.5 px-1.5 text-green-700"
         >
-          <div class="i-tabler-box"></div>
+          <div>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-fenlei"></use>
+            </svg>
+          </div>
           <div class="break-keep text-sm" th:text="${categorie.spec.displayName}"></div>
         </a>
       </div>
@@ -29,7 +33,11 @@
           th:href="${tag.status.permalink}"
           class="flex h-fit w-fit items-center space-x-0.5 rounded-lg bg-blue-50 p-0.5 px-1.5 text-blue-700"
         >
-          <div class="i-tabler-tag"></div>
+          <div>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-biaoqianziduan"></use>
+            </svg>
+          </div>
           <div class="text-xs" th:text="${tag.spec.displayName}"></div>
         </a>
       </div>
