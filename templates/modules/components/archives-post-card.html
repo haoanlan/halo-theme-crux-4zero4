@@ -16,13 +16,16 @@
   th:href="${post.status.permalink}"
 >
   <!-- 用于设置文章封面图时渲染文章封面图 -->
-  <div
-    th:unless="${#strings.isEmpty(post.spec.cover)}"
-    class="h-48 w-full rounded-t-lg bg-cover bg-center"
-    th:style="'background-image:url(' + ${post.spec.cover} + ')'"
-  >
+  <div th:unless="${#strings.isEmpty(post.spec.cover)}" class="relative h-48 w-full rounded-t-lg">
+    <img 
+      class="h-48 w-full rounded-t-lg bg-cover bg-center" 
+      th:with='img = ${post.spec.cover}'
+      th:alt="${post.spec.title}"
+      th:data-lazy-src="${ isLazyload ? img : ''}"
+      th:src="${isLazyload ? loadingImg : img}"
+    >
     <div
-      class="flex h-full w-full items-start justify-between rounded-t-lg bg-gradient-to-b from-black/50 to-white/0 p-4 pt-6"
+      class="absolute inset-0 flex h-full w-full items-start justify-between rounded-t-lg bg-gradient-to-b from-black/50 to-white/0 p-4 pt-6"
     >
       <a th:href="${'/authors/' + post.owner.name}" class="flex items-center space-x-2">
         <div
@@ -52,13 +55,16 @@
     </div>
   </div>
   <!-- 用于在未设置文章封面图时调用默认封面图 -->
-  <div
-    th:if="${#strings.isEmpty(post.spec.cover)}"
-    class="h-48 w-full rounded-t-lg bg-cover bg-center"
-    th:style="'background-image:url(' + ${theme.config.global.default_cover} + ')'"
-  >
+  <div th:if="${#strings.isEmpty(post.spec.cover)}" class="relative h-48 w-full rounded-t-lg" th:with='postRandomImg=${#strings.contains(theme.config.global.default_cover,"?") ? theme.config.global.default_cover+"&" : theme.config.global.default_cover+"?"}'>
+    <img 
+      class="h-48 w-full rounded-t-lg bg-cover bg-center" 
+      th:with='img = ${postRandomImg+post.spec.title}'
+      th:alt="${post.spec.title}"
+      th:data-lazy-src="${ isLazyload ? img : ''}"
+      th:src="${isLazyload ? loadingImg : img}"
+    >
     <div
-      class="flex h-full w-full items-start justify-between rounded-t-lg bg-gradient-to-b from-black/50 to-white/0 p-4 pt-6"
+      class="absolute inset-0 flex h-full w-full items-start justify-between rounded-t-lg bg-gradient-to-b from-black/50 to-white/0 p-4 pt-6"
     >
       <a th:href="${'/authors/' + post.owner.name}" class="flex items-center space-x-2">
         <div

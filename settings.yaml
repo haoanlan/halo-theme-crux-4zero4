@@ -106,7 +106,7 @@ spec:
         - $formkit: attachment
           name: default_cover
           label: 默认封面图
-          value: ""
+          value: "/themes/theme-crux/assets/crux.png"
         - $formkit : radio
           name: health_check
           label: 是否开启可用性检测
@@ -116,6 +116,36 @@ spec:
               value: true
             - label: 否
               value: false
+        - $formkit: group
+          name: vanillaLazyload
+          label: 懒加载
+          value:
+            enable: true
+            errorImg: "/themes/theme-crux/assets/images/404.gif"
+            loadingImg: /themes/theme-crux/assets/images/404s.gif
+          children:
+            - $formkit: radio
+              name: enable
+              id: enable
+              key: enable
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: attachment
+              name: loadingImg
+              id: loadingImg
+              key: loadingImg
+              if: $get(enable).value
+              label: 加载图片
+              validation: required
+              placeholder: 请输入图片 url
+            - $formkit: attachment
+              name: errorImg
+              label: 图片加载失败图
+              validation: required
+              placeholder: 请输入图片 url
     - group: personal_about
       label: 关于 | 个人
       formSchema:
