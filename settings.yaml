@@ -200,71 +200,71 @@ spec:
               name: value
               label: 值（详细填写内容请参考主题文档）
               value: ""
-    - group: team_about
-      label: 关于 | 团队
-      formSchema:
-        - $formkit: attachment
-          name: banner
-          label: 背景
-          value: ""
-        - $formkit: text
-          name: name
-          label: 名称
-          value: ""
-        - $formkit: repeater
-          name: members
-          label: 成员
-          value: [ ]
-          max: 10
-          min: 1
-          children:
-            - $formkit: attachment
-              name: avatar
-              label: 头像
-              value: ""
-            - $formkit: text
-              name: name
-              label: 名称
-              value: ""
-            - $formkit: text
-              name: position
-              label: 职位
-              value: ""
+    # - group: team_about
+    #   label: 关于 | 团队
+    #   formSchema:
+    #     - $formkit: attachment
+    #       name: banner
+    #       label: 背景
+    #       value: ""
+    #     - $formkit: text
+    #       name: name
+    #       label: 名称
+    #       value: ""
+    #     - $formkit: repeater
+    #       name: members
+    #       label: 成员
+    #       value: [ ]
+    #       max: 10
+    #       min: 1
+    #       children:
+    #         - $formkit: attachment
+    #           name: avatar
+    #           label: 头像
+    #           value: ""
+    #         - $formkit: text
+    #           name: name
+    #           label: 名称
+    #           value: ""
+    #         - $formkit: text
+    #           name: position
+    #           label: 职位
+    #           value: ""
 
-            - $formkit: repeater
-              name: socials
-              label: 社交账号
-              value: [ ]
-              max: 5
-              min: 1
-              children:
-                - $formkit: select
-                  name: type
-                  label: 类型
-                  value: qq
-                  options:
-                    - label: QQ
-                      value: qq
-                    - label: Github
-                      value: github
-                    - label: Email
-                      value: email
-                    - label: 钉钉
-                      value: dingtalk
-                    - label: 微信
-                      value: wechat
-                    - label: telegram
-                      value: telegram
-                    - label: 网站
-                      value: website
-                - $formkit: text
-                  name: name
-                  label: 名称
-                  value: ""
-                - $formkit: text
-                  name: value
-                  label: 值（详细填写内容请参考主题文档）
-                  value: ""      
+    #         - $formkit: repeater
+    #           name: socials
+    #           label: 社交账号
+    #           value: [ ]
+    #           max: 5
+    #           min: 1
+    #           children:
+    #             - $formkit: select
+    #               name: type
+    #               label: 类型
+    #               value: qq
+    #               options:
+    #                 - label: QQ
+    #                   value: qq
+    #                 - label: Github
+    #                   value: github
+    #                 - label: Email
+    #                   value: email
+    #                 - label: 钉钉
+    #                   value: dingtalk
+    #                 - label: 微信
+    #                   value: wechat
+    #                 - label: telegram
+    #                   value: telegram
+    #                 - label: 网站
+    #                   value: website
+    #             - $formkit: text
+    #               name: name
+    #               label: 名称
+    #               value: ""
+    #             - $formkit: text
+    #               name: value
+    #               label: 值（详细填写内容请参考主题文档）
+    #               value: ""      
     - group: footer
       label: 页脚
       formSchema:

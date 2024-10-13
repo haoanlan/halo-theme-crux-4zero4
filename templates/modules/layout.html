@@ -9,7 +9,8 @@
 <!DOCTYPE html>
 <html lang="en" th:fragment="html (content)" 
   th:with='isLazyload = ${theme.config.global.vanillaLazyload.enable},
-    loadingImg = ${theme.config.global.vanillaLazyload.loadingImg}'
+    loadingImg = ${theme.config.global.vanillaLazyload.loadingImg},
+    errorImg = ${theme.config.global.vanillaLazyload.errorImg},'
 >
   <head>
     <meta charset="UTF-8" />
@@ -21,7 +22,6 @@
       th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}"
       href="./assets/dist/style.css?v={version}(version=${theme.spec.version})}"
     />
-    <link rel="stylesheet" href="../assets/font/iconfont.css">
     <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}" defer></script>
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script>
     <script src="/themes/theme-crux/assets/font/iconfont.js"></script>
@@ -32,7 +32,7 @@
           threshold: 0,
           data_src: 'lazy-src',
           callback_error: (img) => {
-            img.setAttribute("srcset", GLOBAL_CONFIG.lazyload.error);
+            img.setAttribute("srcset","[[@{${theme.config.global.vanillaLazyload.errorImg}}]]");
           }
         })
       });

@@ -220,7 +220,7 @@
         th:each="menuItem : ${menuFinder.getByName(theme.config.nav.menu).menuItems}"
         x-data="dropdown"
         @mouseenter="clearTimeout(timer); show = true"
-        @mouseleave="timer = setTimeout(() => show = false, 300)"
+        @mouseleave="timer = setTimeout(() => show = false, 100)"
       > 
         <!-- usual use ${menuFinder.getByName(theme.config.nav.menu).menuItems} to get menu items -->
         <span th:if="${not #lists.isEmpty(menuItem.children)}">

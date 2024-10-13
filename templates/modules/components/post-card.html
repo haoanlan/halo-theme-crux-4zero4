@@ -27,7 +27,7 @@
   <!-- 用于设置文章封面图时渲染文章封面图 -->
   <div th:unless="${#strings.isEmpty(post.spec.cover)}" class="relative h-48 w-full rounded-t-lg">
     <img 
-      class="h-48 w-full rounded-t-lg bg-cover bg-center" 
+      class="h-48 w-full rounded-t-lg object-cover" 
       th:with='img = ${post.spec.cover}'
       th:alt="${post.spec.title}"
       th:data-lazy-src="${ isLazyload ? img : ''}"
@@ -66,7 +66,7 @@
   <!-- 用于在未设置文章封面图时调用默认封面图 -->
   <div th:if="${#strings.isEmpty(post.spec.cover)}" class="relative h-48 w-full rounded-t-lg" th:with='postRandomImg=${#strings.contains(theme.config.global.default_cover,"?") ? theme.config.global.default_cover+"&" : theme.config.global.default_cover+"?"}'>
     <img 
-      class="h-48 w-full rounded-t-lg bg-cover bg-center" 
+      class="h-48 w-full rounded-t-lg object-cover" 
       th:with='img = ${postRandomImg+post.spec.title}'
       th:alt="${post.spec.title}"
       th:data-lazy-src="${ isLazyload ? img : ''}"
@@ -130,5 +130,7 @@
         <div class="i-tabler-arrow-right"></div>
       </a>
     </div>
-  </div>
+  </div>   
 </div>
+
+

@@ -1,0 +1,63 @@
+
+<nav id="pagination" th:fragment="page(path, pageInfo, isIndex, _param)" class="col-span-10 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-600">
+  <div class="flex items-center justify-between" th:with="paths = ${isIndex ? path+'/' : path}">
+    <!-- 翻页按钮 -->
+    <a class="flex items-center rounded-lg bg-blue-50 p-2 text-blue-700 transition duration-700 hover:bg-blue-500 hover:text-white"
+       th:if="${pageInfo.hasPrevious}"
+       th:href="${pageInfo.prevUrl}"
+       onclick="scrollToPost()">
+      <i class="haofont hao-icon-chevron-left fa-fw"></i>
+      <span class="up">上页</span>
+    </a>
+
+    <!-- 页码按钮 -->
+    <div class="flex items-center space-x-2">
+      <th:block th:if="${pageInfo.page > 3}">
+        <a class="page-number rounded-lg p-2 text-blue-700 bg-blue-50 transition duration-700 hover:bg-blue-500 hover:text-white"
+           th:href="${paths}" th:text="1"
+           onclick="scrollToPost()"></a>
+        <span class="text-gray-500">…</span>
+      </th:block>
+
+      <th:block th:each="index : ${#numbers.sequence(pageInfo.page-2, pageInfo.page+2)}">
+        <span class="page-number current rounded-lg p-2 bg-blue-500 text-white" th:if="${pageInfo.page == index}" th:text="${pageInfo.page}"></span>
+        <a class="page-number rounded-lg p-2 text-blue-700 bg-blue-50 transition duration-700 hover:bg-blue-500 hover:text-white"
+           th:unless="${pageInfo.page == index}"
+           th:if="${index > 0 && index <= pageInfo.totalPages}"
+           th:href="${#strings.equals(index, '1') ? paths + _param : path + '/page/' + index + _param}"
+           th:text="${index}"
+           onclick="scrollToPost()"></a>
+      </th:block>
+
+      <th:block th:if="${pageInfo.totalPages - pageInfo.page > 2}">
+        <span class="text-gray-500">…</span>
+        <a class="page-number rounded-lg p-2 text-blue-700 bg-blue-50 transition duration-700 hover:bg-blue-500 hover:text-white"
+           th:href="${path + '/page/' + pageInfo.totalPages + _param}"
+           th:text="${pageInfo.totalPages}"
+           onclick="scrollToPost()"></a>
+      </th:block>
+    </div>
+
+    <a class="flex items-center rounded-lg bg-blue-50 p-2 text-blue-700 transition duration-700 hover:bg-blue-500 hover:text-white"
+       th:if="${pageInfo.hasNext}"
+       th:href="${pageInfo.nextUrl}"
+       onclick="scrollToPost()">
+      <span class="down">下页</span>
+      <i class="haofont hao-icon-chevron-right fa-fw"></i>
+    </a>
+  </div>
+
+  <script th:if="${theme.config.top.above.enable_above}">
+    function scrollToPost() {
+      if (document.querySelector(".pl-container")) {
+        setTimeout(() => {
+          btf.scrollToDest(window.innerHeight, 500);
+        }, 1000);
+      }
+    }
+  </script>
+  <script th:unless="${theme.config.top.above.enable_above}">
+    function scrollToPost() {
+    }
+  </script>
+</nav>
