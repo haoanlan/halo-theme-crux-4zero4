@@ -75,7 +75,7 @@
     </div>
     <div class="w-full rounded-lg bg-white p-2 transition duration-700 dark:bg-slate-700">
       <div class="flex items-center justify-end gap-1.5 overflow-auto overflow-x-hidden overflow-y-hidden">
-        <th:block th:replace="modules/components/social :: social(socials=${theme.config.footer.socials})"> </th:block>
+        <th:block th:replace="~{modules/components/social :: social(socials=${theme.config.footer.socials})}"> </th:block>
       </div>
     </div>
   </div>

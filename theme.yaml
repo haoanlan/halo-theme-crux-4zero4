@@ -25,3 +25,7 @@ spec:
         description: Github项目展示页
         screenshot:
         file: page_github.html
+      - name: 友链模板
+        description: 用于展示友链的页面
+        screenshot:
+        file: links.html

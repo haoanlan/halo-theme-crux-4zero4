@@ -34,3 +34,7 @@
 body[data-rendered="false"] {
   display: none;
 }
+em-emoji-picker {
+  height: 20rem;
+  width: 20rem;
+}
