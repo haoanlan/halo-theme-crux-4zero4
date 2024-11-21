@@ -9,7 +9,7 @@
  * Copyright (c) 2023 by Crux, All Rights Reserved. 
 -->
 <div th:unless="${theme.config.global.health_check}" class="grid grid-cols-10 gap-2 pt-4">
-  <div class="col-span-10 grid h-52 grid-rows-2 gap-2 md:col-span-4">
+  <div class="col-span-10 grid h-52 grid-rows-2 gap-2 md:col-span-4 z-10">
     <div class="space-y-2 rounded-lg bg-white p-2 transition duration-700 dark:bg-slate-700 md:row-span-1">
       <div class="flex max-h-full flex-wrap gap-2 overflow-auto overflow-x-hidden overflow-y-hidden">
         <a
@@ -17,11 +17,7 @@
           th:href="${categorie.status.permalink}"
           class="flex h-fit w-fit items-center space-x-0.5 rounded-lg bg-green-50 p-0.5 px-1.5 text-green-700"
         >
-          <div>
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-fenlei"></use>
-            </svg>
-          </div>
+        <div class="i-tabler-box"></div>
           <div class="break-keep text-sm" th:text="${categorie.spec.displayName}"></div>
         </a>
       </div>
@@ -33,11 +29,7 @@
           th:href="${tag.status.permalink}"
           class="flex h-fit w-fit items-center space-x-0.5 rounded-lg bg-blue-50 p-0.5 px-1.5 text-blue-700"
         >
-          <div>
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-biaoqianziduan"></use>
-            </svg>
-          </div>
+        <div class="i-tabler-tag"></div>
           <div class="text-xs" th:text="${tag.spec.displayName}"></div>
         </a>
       </div>
