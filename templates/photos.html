@@ -26,6 +26,7 @@
           ></div>
           <div class="col-span-3 flex w-full max-w-full snap-x gap-2 overflow-auto rounded-lg">
             <img
+              data-fancybox="gallery"
               th:each="photo : ${group.photos}"
               class="relative h-48 snap-start rounded-lg bg-white shadow-xl"
               th:src="${photo.spec.url}"

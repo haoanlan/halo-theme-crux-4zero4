@@ -66,12 +66,14 @@
                 <div class="flex justify-start space-x-2 overflow-auto">
                   <th:block th:if="${not #lists.isEmpty(content.medium)}" th:each="momentItem : ${content.medium}">
                     <img
-                      class="h-16 snap-start rounded-lg"
+                      data-fancybox="gallery"
+                      class="snap-start rounded-lg !cursor-zoom-in"
                       th:if="${momentItem.type.name == 'PHOTO'}"
                       th:src="${momentItem.url}"
                     />
                     <video
-                      class="h-16 snap-start rounded-lg"
+                      data-fancybox="gallery"
+                      class="snap-start rounded-lg !cursor-zoom-in"
                       th:if="${momentItem.type.name == 'VIDEO'}"
                       th:src="${momentItem.url}"
                     ></video>

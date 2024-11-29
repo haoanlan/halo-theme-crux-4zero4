@@ -21,10 +21,13 @@
     <link
       rel="stylesheet"
       th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}"
-      href="./assets/dist/style.css?v={version}(version=${theme.spec.version})}"
+      href="./assets/dist/style.css?v={version}(version=${theme.spec.version})"
     />
+    <link rel="stylesheet" as="style"
+    th:href="@{/assets/fancybox/fancybox.css?v={version}(version=${theme.spec.version})}">
     <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}" defer></script>
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script> 
+    <!-- <script th:src="@{/assets/js/jquery.min.js?v={version}(version=${theme.spec.version})}"></script> -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         window.lazyLoadInstance = new LazyLoad({
@@ -58,6 +61,8 @@
     <div id="scrollToTop" class="fixed bottom-4 right-4 z-10 h-12 w-12 rounded-lg bg-blue-700 p-3">
       <div class="i-heroicons-arrow-small-up !h-full !w-full text-white"></div>
     </div>
+    <script th:src="@{/assets/fancybox/fancybox.umd.js?v={version}(version=${theme.spec.version})}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/l10n/zh_CN.umd.js"></script>
   </body>
   <script>
     if (localStorage.getItem("color-scheme") === "dark") {
@@ -68,6 +73,13 @@
     document.addEventListener("DOMContentLoaded", () => {
       // 这里文档已加载完成
       document.body.dataset.rendered = "true";
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      Fancybox.bind('[data-fancybox]', {
+        animationEffect: "slide",
+        l10n: Fancybox.l10n.zh_CN,
+      // 其他选项
+      });
     });
     const scrollToTopBtn = document.querySelector("#scrollToTop");
     let timeout;
