@@ -23,6 +23,10 @@
       th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}"
       href="./assets/dist/style.css?v={version}(version=${theme.spec.version})"
     />
+    <link rel="stylesheet preload" as="style"
+    th:href="@{/assets/syntaxy/syntaxy.light.min.css?v={version}(version=${theme.spec.version})}">
+    <link rel="alternate stylesheet preload" as="style" data-dark
+    th:href="@{/assets/syntaxy/syntaxy.dark.min.css?v={version}(version=${theme.spec.version})}">
     <link rel="stylesheet" as="style"
     th:href="@{/assets/fancybox/fancybox.css?v={version}(version=${theme.spec.version})}">
     <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}" defer></script>
@@ -62,6 +66,7 @@
       <div class="i-heroicons-arrow-small-up !h-full !w-full text-white"></div>
     </div>
     <script th:src="@{/assets/fancybox/fancybox.umd.js?v={version}(version=${theme.spec.version})}"></script>
+    <script th:src="@{/assets/syntaxy/syntaxy.min.js?v={version}(version=${theme.spec.version})}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/l10n/zh_CN.umd.js"></script>
   </body>
   <script>
@@ -73,6 +78,30 @@
     document.addEventListener("DOMContentLoaded", () => {
       // 这里文档已加载完成
       document.body.dataset.rendered = "true";
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      var options = {
+        codeType: 'default',
+        minHeight: '',
+        maxHeight: '500px',
+      };
+      var contentElement = document.getElementById('content');
+      var codebox = contentElement.querySelectorAll('pre code');
+      codebox.forEach(function (code) {
+        var syntaxy = new Syntaxy(code, options);
+        syntaxy.render();
+      });
+      var prebox = contentElement.querySelectorAll('pre');
+      prebox.forEach(function (pre) {
+        pre.style.backgroundColor = 'transparent';  // 修改背景色
+        pre.style.padding = '0px';              // 修改内边距   
+        pre.style.borderRadius = '0px';         // 圆角
+        pre.style.overflow = 'auto';             // 防止溢出，添加滚动条
+      });
+      var stx = contentElement.querySelectorAll('.stx-scroller');
+      stx.forEach(function (stx) {
+        stx.style.overflow = 'auto';             // 防止溢出，添加滚动条
+      })
     });
     document.addEventListener('DOMContentLoaded', function () {
       Fancybox.bind('[data-fancybox]', {

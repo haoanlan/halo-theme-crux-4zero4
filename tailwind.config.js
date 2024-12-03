@@ -10,12 +10,28 @@
  */
 /** @type {import('tailwindcss').Config} */
 
+const { all } = require('axios');
 const { Icons } = require("tailwindcss-plugin-icons");
 module.exports = {
   content: ["./templates/**/*.html", "./src/main.ts"],
   darkMode: ['class'],
   theme: {
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            code:{
+              fontSize: "14px !important",
+              borderRadius: "4px !important",
+              background: "skyblue !important",
+              color: "blue !important",
+              padding: "2px 6px !important",
+              fontFamily: "'PingFang SC','Consolas','Courier New','monospace'",
+            }
+          },
+        },
+      },
+    },
     fontFamily: {
       sans: [
         'ui-sans-serif',
