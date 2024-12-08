@@ -13,7 +13,7 @@ spec:
   repo: https://github.com/haoanlan/halo-theme-crux-4zero4
   settingName: "theme-crux-setting"
   configMapName: "theme-crux-configMap"
-  version: "1.1.7"
+  version: "1.1.8"
   require: ">=2.20.0"
   customTemplates:
     page:

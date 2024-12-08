@@ -1,0 +1,38 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <title th:text="${!#strings.isEmpty(post.spec.title)? post.spec.title +' | '+ site.title : site.title}"></title> -->
+  <title th:text="${title}"></title>
+  <link
+    rel="stylesheet"
+    th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}"
+    href="./assets/dist/style.css?v={version}(version=${theme.spec.version})"
+  />
+  <link rel="stylesheet preload" as="style"
+  th:href="@{/assets/syntaxy/syntaxy.light.min.css?v={version}(version=${theme.spec.version})}">
+  <link rel="alternate stylesheet preload" as="style" data-dark
+  th:href="@{/assets/syntaxy/syntaxy.dark.min.css?v={version}(version=${theme.spec.version})}">
+  <link rel="stylesheet" as="style"
+  th:href="@{/assets/fancybox/fancybox.css?v={version}(version=${theme.spec.version})}">
+  <link rel="stylesheet preload" as="style"
+  th:href="@{/assets/js/theme.css?v={version}(version=${theme.spec.version})}">
+  <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}" defer></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script> 
+  <!-- <script th:src="@{/assets/js/jquery.min.js?v={version}(version=${theme.spec.version})}"></script> -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      window.lazyLoadInstance = new LazyLoad({
+        elements_selector: 'img',
+        threshold: 0,
+        data_src: 'lazy-src',
+        callback_error: (img) => {
+          img.setAttribute("srcset","[[@{${theme.config.global.vanillaLazyload.errorImg}}]]");
+        }
+      })
+    });
+  </script>
+  <style>
+
+  </style>
+</head>

@@ -12,120 +12,86 @@
     loadingImg = ${theme.config.global.vanillaLazyload.loadingImg},
     errorImg = ${theme.config.global.vanillaLazyload.errorImg},'
 >
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <title th:text="${!#strings.isEmpty(post.spec.title)? post.spec.title +' | '+ site.title : site.title}"></title> -->
-    <title th:text="${title}"></title>
-    <link
-      rel="stylesheet"
-      th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}"
-      href="./assets/dist/style.css?v={version}(version=${theme.spec.version})"
-    />
-    <link rel="stylesheet preload" as="style"
-    th:href="@{/assets/syntaxy/syntaxy.light.min.css?v={version}(version=${theme.spec.version})}">
-    <link rel="alternate stylesheet preload" as="style" data-dark
-    th:href="@{/assets/syntaxy/syntaxy.dark.min.css?v={version}(version=${theme.spec.version})}">
-    <link rel="stylesheet" as="style"
-    th:href="@{/assets/fancybox/fancybox.css?v={version}(version=${theme.spec.version})}">
-    <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}" defer></script>
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script> 
-    <!-- <script th:src="@{/assets/js/jquery.min.js?v={version}(version=${theme.spec.version})}"></script> -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        window.lazyLoadInstance = new LazyLoad({
-          elements_selector: 'img',
-          threshold: 0,
-          data_src: 'lazy-src',
-          callback_error: (img) => {
-            img.setAttribute("srcset","[[@{${theme.config.global.vanillaLazyload.errorImg}}]]");
-          }
-        })
-      });
-    </script>
-    <style>
-
-    </style>
-  </head>
-
-  <body id="app" data-rendered="false">
-    <div class="bg-gray-50 pb-16 transition duration-700 dark:bg-slate-800">
-      <th:block th:replace="~{modules/components/nav::components-nav}"></th:block>
-      <div class="mx-auto min-h-screen max-w-screen-lg p-4 pt-32">
-        <th:block th:replace="${content}" />
-        <div th:if="${theme.config.footer.footer_type == 'card'}">
-          <th:block th:replace="~{modules/components/footer}"></th:block>
-        </div>
-      </div>
-      <div th:if="${theme.config.footer.footer_type == 'basic'}">
-        <th:block th:replace="~{modules/components/footer-basic}"> </th:block>
+<title th:text="${title}"></title>
+<head th:replace="~{modules/head}"></head>
+<body id="app" data-rendered="false">
+  <div class="bg-gray-50 pb-16 transition duration-700 dark:bg-slate-800">
+    <th:block th:replace="~{modules/components/nav::components-nav}"></th:block>
+    <div class="mx-auto min-h-screen max-w-screen-lg p-4 pt-32">
+      <th:block th:replace="${content}" />
+      <div th:if="${theme.config.footer.footer_type == 'card'}">
+        <th:block th:replace="~{modules/components/footer}"></th:block>
       </div>
     </div>
-    <div id="scrollToTop" class="fixed bottom-4 right-4 z-10 h-12 w-12 rounded-lg bg-blue-700 p-3">
-      <div class="i-heroicons-arrow-small-up !h-full !w-full text-white"></div>
+    <div th:if="${theme.config.footer.footer_type == 'basic'}">
+      <th:block th:replace="~{modules/components/footer-basic}"> </th:block>
     </div>
-    <script th:src="@{/assets/fancybox/fancybox.umd.js?v={version}(version=${theme.spec.version})}"></script>
-    <script th:src="@{/assets/syntaxy/syntaxy.min.js?v={version}(version=${theme.spec.version})}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/l10n/zh_CN.umd.js"></script>
-  </body>
-  <script>
-    if (localStorage.getItem("color-scheme") === "dark") {
-      document.getElementById("app")?.classList.add("dark");
-    } else {
-      document.getElementById("app")?.classList.remove("dark");
-    }
-    document.addEventListener("DOMContentLoaded", () => {
-      // 这里文档已加载完成
-      document.body.dataset.rendered = "true";
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-      var options = {
-        codeType: 'default',
-        minHeight: '',
-        maxHeight: '500px',
-      };
-      var contentElement = document.getElementById('content');
+  </div>
+  <div id="scrollToTop" class="fixed bottom-4 right-4 z-10 h-12 w-12 rounded-lg bg-blue-700 p-3">
+    <div class="i-heroicons-arrow-small-up !h-full !w-full text-white"></div>
+  </div>
+  <script th:src="@{/assets/fancybox/fancybox.umd.js?v={version}(version=${theme.spec.version})}"></script>
+  <script th:src="@{/assets/syntaxy/syntaxy.min.js?v={version}(version=${theme.spec.version})}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/l10n/zh_CN.umd.js"></script>
+</body>
+<script>
+  if (localStorage.getItem("color-scheme") === "dark") {
+    document.getElementById("app")?.classList.add("dark");
+  } else {
+    document.getElementById("app")?.classList.remove("dark");
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    // 这里文档已加载完成
+    document.body.dataset.rendered = "true";
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var options = {
+      codeType: 'default',
+      minHeight: '',
+      maxHeight: '500px',
+    };
+    var contentElement = document.getElementById('content');
+    if (contentElement && contentElement.querySelectorAll('pre code').length > 0) {
       var codebox = contentElement.querySelectorAll('pre code');
       codebox.forEach(function (code) {
         var syntaxy = new Syntaxy(code, options);
         syntaxy.render();
       });
-      var prebox = contentElement.querySelectorAll('pre');
-      prebox.forEach(function (pre) {
-        pre.style.backgroundColor = 'transparent';  // 修改背景色
-        pre.style.padding = '0px';              // 修改内边距   
-        pre.style.borderRadius = '0px';         // 圆角
-        pre.style.overflow = 'auto';             // 防止溢出，添加滚动条
-      });
-      var stx = contentElement.querySelectorAll('.stx-scroller');
-      stx.forEach(function (stx) {
-        stx.style.overflow = 'auto';             // 防止溢出，添加滚动条
-      })
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-      Fancybox.bind('[data-fancybox]', {
-        animationEffect: "slide",
-        l10n: Fancybox.l10n.zh_CN,
-      // 其他选项
-      });
-    });
-    const scrollToTopBtn = document.querySelector("#scrollToTop");
-    let timeout;
-    function scrollToTop() {
-      clearTimeout(timeout);
-
-      timeout = setTimeout(() => {
-        // 滚动到顶部
-      }, 200);
-      if ("scrollBehavior" in document.documentElement.style) {
-        // 平滑滚动
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        // 直接滚动
-        window.scrollTo(0, 0);
-      }
+    } else {
+      console.log();
     }
-    scrollToTopBtn.addEventListener("click", scrollToTop);
-  </script>
+    if (contentElement && contentElement.querySelectorAll('p img').length > 0) {
+      var img = contentElement.querySelectorAll('p img');
+        img.forEach(function(img) {
+          img.setAttribute('data-fancybox', 'gallery');
+        });
+    } else {
+      console.log();
+    }
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    Fancybox.bind('[data-fancybox]', {
+      animationEffect: "slide",
+      l10n: Fancybox.l10n.zh_CN,
+    // 其他选项
+    });
+  });
+  const scrollToTopBtn = document.querySelector("#scrollToTop");
+  let timeout;
+  function scrollToTop() {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      // 滚动到顶部
+    }, 200);
+    if ("scrollBehavior" in document.documentElement.style) {
+      // 平滑滚动
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // 直接滚动
+      window.scrollTo(0, 0);
+    }
+  }
+  scrollToTopBtn.addEventListener("click", scrollToTop);
+</script>
 </html>
