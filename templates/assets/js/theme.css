@@ -1,14 +1,10 @@
 p code {
-  font-size: 14px;
-  font-family: "PingFang SC","Consolas","Courier New","monospace";
   background: #46b5f6b8;
   color: blue !important;
   padding: 0.1rem 0.5rem;
   border-radius:0.3rem;
 }
 li code {
-  font-size: 14px;
-  font-family: "PingFang SC","Consolas","Courier New","monospace";
   background: #46b5f6b8;
   color: blue !important;
   padding: 0.1rem 0.5rem;
